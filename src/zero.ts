@@ -14,7 +14,7 @@ const decodedBuffer = Base32.decode(encodedString);
 const decodedString = decodedBuffer.toString('utf8');
 console.log('Decoded:', decodedString);
 
-const url = `otpauth://totp/Hero?secret=${encodedString}&issuer=Zero&algorithm=SHA1`;
+const url = `otpauth://totp/Zero:Hero?secret=${encodedString}&issuer=Zero`;
 
 qrcode.toDataURL(url).then(console.log);
 console.log(url);
