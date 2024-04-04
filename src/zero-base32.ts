@@ -1,3 +1,21 @@
+/**
+ * References:
+ *
+ *   - Introduction: https://en.wikipedia.org/wiki/Base32
+ *   - Base32 Examples: https://datatracker.ietf.org/doc/html/rfc4648#section-10
+ *   - Cases: https://datatracker.ietf.org/doc/html/rfc4648#section-6
+ *     - Contains documentation about 8-bits, 16-bits, 24-bits that you'll later see
+ *       in the TOTP class via the following code:
+ *
+ *     ```ts
+ *     const code =
+ *       ((hmacResult[offset] & 0x7f) << 24) |
+ *       ((hmacResult[offset + 1] & 0xff) << 16) |
+ *       ((hmacResult[offset + 2] & 0xff) << 8) |
+ *       (hmacResult[offset + 3] & 0xff);
+ *     ```
+ *
+ */
 export class Base32 {
   private static readonly BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
