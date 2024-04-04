@@ -1,4 +1,4 @@
-import qrcode from 'qrcode';
+import qrcode from 'qrcode-terminal';
 import { Base32 } from './zero-base32';
 import { generateSecret } from './zero-secret';
 import { TOTP } from './zero-totp';
@@ -16,7 +16,8 @@ console.log('Decoded:', decodedString);
 
 const url = `otpauth://totp/Zero:Hero?secret=${encodedString}&issuer=Zero`;
 
-qrcode.toDataURL(url).then(console.log);
+// qrcode.toDataURL(url).then(console.log); // npm i qrcode
+qrcode.generate(url, { small: true }); // npm i qrcode-terminal
 console.log(url);
 
 console.log(TOTP.generate(encodedString));
