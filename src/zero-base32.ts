@@ -17,6 +17,17 @@
  *
  */
 export class Base32 {
+  /**
+   * It uses an alphabet of A–Z, followed by 2–7.
+   * The digits 0, 1 and 8 are skipped due to their similarity with the letters O, I and B
+   * (thus "2" has a decimal value of 26).
+   *
+   * Decimal <-> Encoding
+   * 0 <-> A
+   * 31 <-> 7
+   *
+   * (pad) =
+   */
   private static readonly BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
   public static encode(buffer: Buffer): string {
@@ -31,6 +42,20 @@ export class Base32 {
     // Pad the binary string to make its length a multiple of 5
     while (binaryString.length % 5 !== 0) {
       binaryString += '0';
+      /*
+        This padding is necessary because Base32 encoding operates on groups of 5 bits.
+    
+        In the RFC 4648 specification for Base32,
+        the input to be encoded must be padded with zeros to a length that is a multiple of 5 if necessary.
+        
+        This ensures that the binary data is divided into groups of 5 bits,
+        which can then be mapped to the corresponding Base32 characters.
+    
+        By padding the binary string to a length that is a multiple of 5,
+        we ensure that we have complete groups of 5 bits to encode.
+        
+        This helps maintain consistency and correctness in the encoding process.
+      */
     }
 
     // Split the binary string into groups of 5 and encode each group
@@ -42,6 +67,21 @@ export class Base32 {
     // Pad the encoded string with '=' characters if necessary
     while (encodedString.length % 8 !== 0) {
       encodedString += '=';
+      /*
+        Add padding characters ('=') to the encoded string to ensure its length is a multiple of 8.
+
+        In Base32 encoding, the output is represented as a series of 8-bit bytes (1 byte),
+        which are then encoded using the Base32 alphabet. 
+        
+        However, the number of characters in the encoded string may not always be a multiple of 8, 
+        especially if the original binary data length is not a multiple of 5 
+        (since each 5 bits of input are encoded into a single Base32 character).
+
+        According to the RFC 4648 specification, 
+        if the number of encoded characters is not a multiple of 8, 
+        padding characters ('=') should be added to the end of the encoded string to make it a multiple of 8. 
+        This is necessary to properly align the encoded data and indicate the end of the encoded information.
+      */
     }
 
     return encodedString;
