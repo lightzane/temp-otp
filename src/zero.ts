@@ -3,11 +3,18 @@ import { Base32 } from './zero-base32';
 import { generateSecret } from './zero-secret';
 import { TOTP } from './zero-totp';
 
+// Two (2) input options:
+// Option 1: Readable secret
+//   - Write a readable message and encode it to Base 32
+// Option 2: Unreadable secret
+//   - Generate a secret ready to be passed as Base 32 encoded
+
 // Example usage:
-const inputString = generateSecret();
+const inputString = 'READABLE_SECRET';
 const buffer = Buffer.from(inputString, 'utf8');
 
-const encodedString = Base32.encode(buffer);
+// Option 2 or Option 1
+const encodedString = generateSecret() || Base32.encode(buffer);
 console.log('Encoded:', encodedString);
 
 const decodedBuffer = Base32.decode(encodedString);

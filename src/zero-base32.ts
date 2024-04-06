@@ -28,7 +28,7 @@ export class Base32 {
    *
    * (pad) =
    */
-  private static readonly BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  public static readonly BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
   public static encode(buffer: Buffer): string {
     let binaryString = '';
