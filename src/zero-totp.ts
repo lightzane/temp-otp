@@ -10,6 +10,7 @@ export class TOTP {
     digits: number = 6,
   ): string {
     // Calculate the counter based on the current time
+    // Calculates how many 30-second intervals have passed since the Unix epoch began.
     const counter = Math.floor(Date.now() / (timeStep * 1000));
 
     // Convert the counter to a buffer
