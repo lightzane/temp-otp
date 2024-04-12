@@ -1,4 +1,14 @@
-# Base32 Encoding
+# Time Based OTP
+
+Live demo: https://sky-blog.pages.dev/2024/04/12/totp-algorithm/#live-demo
+
+## RFC 6238
+
+### TOTP Algorithm Implementation
+
+https://datatracker.ietf.org/doc/html/rfc6238#appendix-A
+
+## Base32 Encoding
 
 ```
 Base 32 Encoding
@@ -85,9 +95,3 @@ RFC 4648                    Base-N Encodings                October 2006
 ```
 
 Reference: https://datatracker.ietf.org/doc/html/rfc4648#section-6
-
-## RFC 6238
-
-### TOTP Algorithm Implementation
-
-https://datatracker.ietf.org/doc/html/rfc6238#appendix-A
