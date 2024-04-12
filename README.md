@@ -85,3 +85,9 @@ RFC 4648                    Base-N Encodings                October 2006
 ```
 
 Reference: https://datatracker.ietf.org/doc/html/rfc4648#section-6
+
+## RFC 6238
+
+### TOTP Algorithm Implementation
+
+https://datatracker.ietf.org/doc/html/rfc6238#appendix-A
